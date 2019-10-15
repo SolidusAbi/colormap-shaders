@@ -1,0 +1,15 @@
+target_sources(ColorMapShaders PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/autumn.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/bone.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/cool.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/copper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/hot.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/hsv.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/jet.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/parula.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/pink.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/spring.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/summer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/winter.h
+)
+ 
