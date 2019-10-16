@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 #pragma once
-#include "colormap/colormap.h"
+#include "colormap.h"
 
 namespace colormap
 {

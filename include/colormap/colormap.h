@@ -166,7 +166,7 @@ protected:
 
 } // namespace colormap
 
-#include "colormap/private/all_colormaps.h"
+#include "private/all_colormaps.h"
 
 namespace colormap
 {
@@ -176,7 +176,7 @@ public:
 	static std::vector<std::shared_ptr<Colormap const>> getAll()
 	{
 		return {
-            #include "colormap/private/init_colormap_list.inc"
+            #include "private/init_colormap_list.inc"
 		};
 	}
 
