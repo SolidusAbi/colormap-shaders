@@ -1,24 +1,5 @@
-cmake_minimum_required(VERSION 3.9)
-
-project(ColorMapShaders VERSION 0.01
-                         LANGUAGES CXX)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(Qt5 COMPONENTS Core REQUIRED)
-
-
-add_library(ColorMapShaders SHARED)
-
-target_sources(ColorMapShaders PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/colormap.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/all_colormaps.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/init_colormap_list.inc>
+ 
+target_sources(ColorMapShaders PRIVATE
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/16_Level.h>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/Beach.h>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/Black-White_Linear.h>
@@ -94,57 +75,4 @@ target_sources(ColorMapShaders PUBLIC
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/Stern_Special.h>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/Volcano.h>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/IDL/Waves.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/autumn.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/bone.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/cool.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/copper.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/hot.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/hsv.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/jet.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/parula.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/pink.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/spring.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/summer.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/MATLAB/winter.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/kbinani/altitude.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/apricot.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/carnation.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/ether.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/grayscale_banded.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/hot_metal.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/lava_waves.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/malachite.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/morning_glory.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/peanut_butter_and_jerry.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/purple_haze.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/rainbow.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/rose.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/saturn.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/seismic.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/space.h>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/colormap/private/transform/supernova.h>
 )
-
-add_subdirectory(shaders/)
-# add_subdirectory(src/)
-
-# Install
-# https://foonathan.net/2016/03/cmake-install/
-# LEER!!: https://gitlab.kitware.com/cmake/community/wikis/doc/tutorials/How-to-create-a-ProjectConfig.cmake-file
-target_include_directories(ColorMapShaders PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include/>)
-target_include_directories(ColorMapShaders PUBLIC $<INSTALL_INTERFACE:include/colormap/>)
-
-install(TARGETS ColorMapShaders EXPORT
-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-)
-
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
-install(DIRECTORY shaders/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include/shaders)
-
-install(TARGETS ColorMapShaders EXPORT ColorMapShaders DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(EXPORT ColorMapShaders DESTINATION ${CMAKE_INSTALL_PREFIX}/share/colormap/cmake)
-
-## my_library-config.cmake - package configuration file
-#get_filename_component(SELF_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
-#include(${SELF_DIR}/${CMAKE_BUILD_TYPE}/my_library.cmake)
-
