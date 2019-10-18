@@ -129,15 +129,15 @@ add_library(ColorMapShaders INTERFACE)
 target_include_directories(ColorMapShaders INTERFACE $<INSTALL_INTERFACE:include/colormap/>)
 
 install(TARGETS ColorMapShaders EXPORT
-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+    LIBRARY DESTINATION lib
 )
 
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+install(DIRECTORY include/ DESTINATION include)
 #install(DIRECTORY shaders/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include/shaders)
 
-install(TARGETS ColorMapShaders EXPORT ColorMapShaders DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(EXPORT ColorMapShaders DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake)
-install(FILES ${CMAKE_SOURCE_DIR}/cmake/ColorMapShadersConfig.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake)
+install(TARGETS ColorMapShaders EXPORT ColorMapShaders DESTINATION lib)
+install(EXPORT ColorMapShaders DESTINATION lib/cmake)
+install(FILES ${CMAKE_SOURCE_DIR}/cmake/ColorMapShadersConfig.cmake DESTINATION lib/cmake)
 
 ## my_library-config.cmake - package configuration file
 #get_filename_component(SELF_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
